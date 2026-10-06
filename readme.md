@@ -31,7 +31,7 @@ Supports multiple programming subjects, timed exams, reCAPTCHA security, and ins
 ### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/online-exam-system.git
+git clone https://github.com/ShivaniKumari5/online-exam-system.git
 cd online-exam-system
 ```
 
