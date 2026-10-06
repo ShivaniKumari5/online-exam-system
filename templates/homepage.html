@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Examination System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='University emblem tr.png') }}" alt="University Emblem">
+            <div class="logo-title">
+                <p class="nav-title1">Sardar Beant Singh State University, Gurdaspur</p>
+                <p class="nav-title2">Online Examination System</p>
+            </div>               
+        </div>
+
+        <!-- <div class="navLink">
+            <div><a href="{{ url_for('home') }}">Home</a></div>
+            <div><a href="{{ url_for('login_page') }}">Login</a></div>
+            <div class="logout"><a href="{{ url_for('logout') }}">Logout</a></div>
+        </div>   -->
+       
+       <div class="navLink">
+    <div><a href="{{ url_for('home') }}">Home</a></div>
+    {% if session.logged_in %}
+        <div class="logout"><a href="{{ url_for('logout') }}">Logout</a></div>
+    {% else %}
+        <div><a href="{{ url_for('login_page') }}">Login</a></div>
+    {% endif %}
+</div> 
+    </nav>
+       
+    <div class="slider">
+        <div class="slides">
+            <img src="{{ url_for('static', filename='SBSSU-1.jpeg') }}" class="section-image" alt="Campus Image 1">
+            <img src="{{ url_for('static', filename='SBSSU-2.jpeg') }}" class="section-image" alt="Campus Image 2">
+            <img src="{{ url_for('static', filename='SBSSU-4.jpeg') }}" class="section-image" alt="Campus Image 4">
+        </div>
+    </div>
+    
+    <div class="button-class">
+        <a href="{{ url_for('login_page') }}" class="login-button">Start Exam</a>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        let slides = document.getElementsByClassName("section-image");
+        
+        function showSlides() {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000);
+        }
+        
+        showSlides();
+    </script>
+</body>
+</html>

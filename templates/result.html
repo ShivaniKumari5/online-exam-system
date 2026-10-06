@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Results</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="result-box {% if passed %}result-pass{% else %}result-fail{% endif %}">
+            <h1>Exam Results</h1>
+            
+            <div class="score-display">
+                <h2>Your Score: {{ score }} / {{ total }}</h2>
+                <div class="percentage">
+                    {{ (score / total * 100) | round(1) }}%
+                </div>
+                <div class="status {% if passed %}pass{% else %}fail{% endif %}">
+                    {% if passed %}
+                        ✅ PASSED
+                    {% else %}
+                        ❌ FAILED (Minimum passing score: {{ passing_score }}/{{ total }})
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="detailed-results">
+                <h3>Question-wise Analysis:</h3>
+                
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            <th>Your Answer</th>
+                            <th>Correct Answer</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for q_num, result in results.items() %}
+                        <tr class="{% if result.is_correct %}correct-row{% else %}incorrect-row{% endif %}">
+                            <td>Question {{ q_num[1:] }}</td>
+                            <td>{{ result.user_answer or 'Not answered' }}</td>
+                            <td>{{ result.correct_answer }}</td>
+                            <td>
+                                {% if result.is_correct %}
+                                    ✓ Correct
+                                {% else %}
+                                    ✗ Incorrect
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="{{ url_for('login_page') }}" class="btn-home">Take Another Exam</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

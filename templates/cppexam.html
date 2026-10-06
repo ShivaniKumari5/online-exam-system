@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam - C Programming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="exam-header">
+            <h1>CPP Programming Exam</h1>
+            <div class="user-info">
+                <span>Student: {{ username }}</span>
+                <div class="timer" id="timer">Time Left: {{ duration }}:00</div>
+            </div>
+        </div>
+        
+        <form id="examForm" action="{{ url_for('submit_exam') }}" method="POST">
+            <div class="questions-container">
+                <!-- Question 1 -->
+                <div class="question-card">
+                    <h3>Question 1: What is the correct file extension of C++ files?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q1" value=".c" required>
+                            A. .c
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value=".cpp">
+                            B. .cpp
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value=".java">
+                            C. .java
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value=".py">
+                            D. .py
+                        </label>
+                    </div>
+                </div>
+                 <!-- q2 -->
+                  <div class="question-card">
+                    <h3>Question 2: Which of the following is a valid C++ comment?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q2" value="//comment" required>
+                            A. //comment
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="/*comment*/">
+                            B. /* comment */
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="#comment">
+                            C. #comment
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="Both A and B">
+                            D. Both A and B
+                        </label>
+                    </div>
+                </div>
+            
+                <!-- q3 -->
+                   <div class="question-card">
+                    <h3>Question 3: Which function is the entry point of a C++ program?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q3" value="start()" required>
+                            A.start()
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="main()">
+                            B. main()
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="init()">
+                            C. init()
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="run()">
+                            D. run()
+                        </label>
+                    </div>
+                </div>
+
+                <!-- q4 -->
+                 <div class="question-card">
+                    <h3>Question 4: Which of the following is NOT a loop in C++?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q4" value="for" required>
+                           A. for
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="while">
+                            B. while
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="do-while">
+                            C. do-while
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="repeat-until">
+                            D. repeat-until
+                        </label>
+                    </div>
+                </div>
+
+                <!-- q5 -->
+                 <div class="question-card">
+                    <h3>Question 5: What happens if return 0; is omitted in main()?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q5" value="Error" required>
+                           A. Error
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="Program stops">
+                            B. Program stops
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="No problem (modern C++)">
+                            C. No problem (modern C++)
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value=" Infinite loop">
+                            D. Infinite loop
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q6 -->
+                <div class="question-card">
+                    <h3>Question 6: Which header is required for cout?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q6" value="<stdio.h>" required>
+                            A. stdio.h
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="<iostream>">
+                            B. iostream
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="<stdlib.h>">
+                            C. stdlib.h
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="<conio.h>">
+                            D. conio.h
+                        </label>
+                    </div>
+                </div>
+                
+                  <!--  q7 -->
+                <div class="question-card">
+                    <h3>Question 7: Which concept allows the same function name with different parameters?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q7" value="Inheritance" required>
+                           A. Inheritance
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="Encapsulation">
+                            B.Encapsulation
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="Polymorphism">
+                            C. Polymorphism
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="Abstraction">
+                            D. Abstraction
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q8 -->
+                <div class="question-card">
+                    <h3>Question 8: Which concept is used for runtime polymorphism?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q8" value=" Function Overloading" required>
+                             A. Function Overloading
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="Operator Overloading">
+                            B. Operator Overloading
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="Function Overriding">
+                            C. Function Overriding
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="Templates">
+                            D. Templates
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q9 -->
+                
+                <div class="question-card">
+                    <h3>Question 9: Which keyword ends a loop?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q9" value="break" required>
+                            A.  break
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="stop">
+                            B. stop
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="exit">
+                           C. exit
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="end">
+                           D. end
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 10 -->
+                <div class="question-card">
+                    <h3>Question 10: Which operator is used for modulus operation in CPP?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q10" value="+" required>
+                            A. +
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="-">
+                            B. -
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="%">
+                            C. %
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="/">
+                            D. /
+                        </label>
+                    </div>
+                </div>
+                
+               
+                
+                <!-- Question 11 -->
+                <div class="question-card">
+                    <h3>Question 11: Which of the following is a valid CPP data type?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q11" value="int" required>
+                            A. int
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="float">
+                            B. float
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="char">
+                            C. char
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="All of the above">
+                            D. All of the above
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 12 -->
+                <div class="question-card">
+                    <h3>Question 12: What is the purpose of the return 0; statement in a C program?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q12" value="To exit the program" required>
+                            A. To exit the program
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="To return a value from a function">
+                            B. To return a value from a function
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="To indicate successful program execution">
+                            C. To indicate successful program execution
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="To declare variables">
+                            D. To declare variables
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exam-footer">
+                <button type="submit" class="btn-submit">Submit Exam</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Timer JavaScript -->
+    <script>
+        // Set exam duration from server (in minutes)
+        //let timeLeft = {{ duration }} * 60; // Convert to seconds
+        let timeLeft = 6* 60; // 10 minutes
+        const timerElement = document.getElementById('timer');
+        const examForm = document.getElementById('examForm');
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            timerElement.textContent = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                // Auto-submit when timer expires
+                clearInterval(timerInterval);
+                autoSubmitExam();
+            }
+            
+            timeLeft--;
+        }
+        
+        function autoSubmitExam() {
+            // Warn user about auto-submission
+            alert('Time is up! Your exam will be submitted automatically.');
+            
+            // Create a form and submit it
+            const form = document.getElementById('examForm');
+            
+            // Add a hidden input to indicate auto-submission
+            const autoSubmitInput = document.createElement('input');
+            autoSubmitInput.type = 'hidden';
+            autoSubmitInput.name = 'auto_submit';
+            autoSubmitInput.value = 'true';
+            form.appendChild(autoSubmitInput);
+            
+            // Submit the form
+            form.submit();
+        }
+        
+        // Warn user before leaving the page
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = 'Your exam progress will be lost if you leave. Are you sure?';
+        });
+        
+        // Start timer
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); // Initial call
+    </script>
+</body>
+</html>

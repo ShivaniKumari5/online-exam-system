@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam - C Programming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="exam-header">
+            <h1>C Programming Exam</h1>
+            <div class="user-info">
+                <span>Student: {{ username }}</span>
+                <div class="timer" id="timer">Time Left: {{ duration }}:00</div>
+            </div>
+        </div>
+        
+        <form id="examForm" action="{{ url_for('submit_exam') }}" method="POST">
+            <div class="questions-container">
+                <!-- Question 1 -->
+                <div class="question-card">
+                    <h3>Question 1:Which of the following is a valid C data type?</h3>
+
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q1" value="real" required>
+                            A. real
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="integer">
+                            B. integer
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="int">
+                            C. int
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="number">
+                            D. number
+                        </label>
+                    </div>
+                </div>
+                 <!-- q2 -->
+                  <div class="question-card">
+                    <h3>Question 2: Which symbol is used to end a statement in C?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q2" value=":" required>
+                            A. :
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value=";">
+                            B. ;
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value=".">
+                            C. .
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value=",">
+                            D. ,
+                        </label>
+                    </div>
+                </div>
+            
+                <!-- q3 -->
+                   <div class="question-card">
+                    <h3>Question 3: Which header file is required for printf()?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q3" value="stdlib.h" required>
+                            A. stdlib.h
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="stdio.h">
+                            B. stdio.h
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="string.h">
+                            C. string.h
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="math.h">
+                            D. math.h
+                        </label>
+                    </div>
+                </div>
+
+                <!-- q4 -->
+                 <div class="question-card">
+                    <h3>Question 4: Which is input function?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q4" value="printf()" required>
+                           A. printf()
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="scanf()">
+                            B. scanf()
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="display()">
+                            C. display()
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="read()">
+                            D. read()
+                        </label>
+                    </div>
+                </div>
+
+                <!-- q5 -->
+                 <div class="question-card">
+                    <h3>Question 5: Which of the following is a valid C variable name?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q5" value="1var" required>
+                           A. 1var
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="var_1">
+                            B. var_1
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="var-1">
+                            C. var-1
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value=" var 1">
+                            D. var 1
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q6 -->
+                <div class="question-card">
+                    <h3>Question 6: What is the size of int in C (typically)?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q6" value="2 bytes" required>
+                            A. 2 bytes
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="4 bytes">
+                            B. 4 bytes
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="8 bytes">
+                            C. 8 bytes
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="Depends on compiler">
+                            D. Depends on compiler
+                        </label>
+                    </div>
+                </div>
+                
+                  <!--  q7 -->
+                <div class="question-card">
+                    <h3>Question 7: Which of the following is not a valid keyword in C?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q7" value="auto" required>
+                           A. auto
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="volatile">
+                            B. volatile
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="include">
+                            C. include
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="static">
+                            D. static
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q8 -->
+                <div class="question-card">
+                    <h3>Question 8: Which is correct comment in C?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q8" value=" // comment" required>
+                             A. // comment
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="/* comment */">
+                            B. /* comment */
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="Both">
+                            C. Both
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="None">
+                            D. None
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q9 -->
+                
+                <div class="question-card">
+                    <h3>Question 9: Which function is used to read string?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q9" value="scanf()" required>
+                            A.  scanf()
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="gets()">
+                            B. gets()
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="fgets()">
+                           C. fgets()
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="Both B and C">
+                           D. Both B and C
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 10 -->
+                <div class="question-card">
+                    <h3>Question 10: Which of the following is NOT a valid C data type?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q10" value="int" required>
+                            A. int
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="float">
+                            B. float
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="real">
+                            C. real
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="char">
+                            D. char
+                        </label>
+                    </div>
+                </div>
+                
+               
+                
+                <!-- Question 11 -->
+                <div class="question-card">
+                    <h3>Question 11: Which statement is used for decision making?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q11" value="switch" required>
+                            A. switch
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="if">
+                            B. if
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="else">
+                            C. else
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="All of the above">
+                            D. All of the above
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 12 -->
+                <div class="question-card">
+                    <h3>Question 12: Array index in C starts from?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q12" value="0" required>
+                            A. 0
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="1">
+                            B. 1
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="-1">
+                            C. -1
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="Depends">
+                            D. Depends
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exam-footer">
+                <button type="submit" class="btn-submit">Submit Exam</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Timer JavaScript -->
+    <script>
+        // Set exam duration from server (in minutes)
+        //let timeLeft = {{ duration }} * 60; // Convert to seconds
+        let timeLeft = 6 * 60; // 10 minutes
+        const timerElement = document.getElementById('timer');
+        const examForm = document.getElementById('examForm');
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            timerElement.textContent = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                // Auto-submit when timer expires
+                clearInterval(timerInterval);
+                autoSubmitExam();
+            }
+            
+            timeLeft--;
+        }
+        
+        function autoSubmitExam() {
+            // Warn user about auto-submission
+            alert('Time is up! Your exam will be submitted automatically.');
+            
+            // Create a form and submit it
+            const form = document.getElementById('examForm');
+            
+            // Add a hidden input to indicate auto-submission
+            const autoSubmitInput = document.createElement('input');
+            autoSubmitInput.type = 'hidden';
+            autoSubmitInput.name = 'auto_submit';
+            autoSubmitInput.value = 'true';
+            form.appendChild(autoSubmitInput);
+            
+            // Submit the form
+            form.submit();
+        }
+        
+        // Warn user before leaving the page
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = 'Your exam progress will be lost if you leave. Are you sure?';
+        });
+        
+        // Start timer
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); // Initial call
+    </script>
+</body>
+</html>

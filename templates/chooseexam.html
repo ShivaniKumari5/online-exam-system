@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Exam Card</title>
+    <link rel="stylesheet" href="/static/style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Card Container */
+        .exam-card {
+            width: 350px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Logo Section */
+        .logo-section {
+            background: linear-gradient(135deg, #3776AB 0%, #FFD43B 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .logo-section i {
+            font-size: 80px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-section h3 {
+            color: white;
+            margin-top: 15px;
+            font-size: 24px;
+        }
+
+        /* Card Body */
+        .card-body {
+            padding: 25px;
+        }
+
+        /* Exam Info */
+        .exam-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .exam-info span:first-child {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .exam-info span:last-child {
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Topics Tags */
+        .topics {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .topic-tag {
+            background: #f0f0f0;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #3776AB;
+            font-weight: 500;
+        }
+
+        /* Start Button */
+        .start-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #3776AB 0%, #FFD43B 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(55, 118, 171, 0.3);
+        }
+    </style> -->
+
+
+
+  <style>
+    /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    } */
+
+    /* Exam Card Styles */
+    .exam-grid {
+        padding-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .exam-card {
+        height: 450px;
+        width: 300px;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+    .exam-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Logo Section - Red Theme */
+    .logo-section {
+        background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .logo-section i {
+        font-size: 80px;
+        display: inline-block;
+        
+    }
+
+    /* @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    } */
+
+    .logo-section h3 {
+        color: white;
+        margin-top: 15px;
+        font-size: 24px;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Card Body */
+    .card-body {
+        padding: 25px;
+    }
+
+    /* Exam Info Styles */
+    .exam-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .exam-info:last-of-type {
+        border-bottom: none;
+        margin-bottom: 20px;
+    }
+
+    .exam-info span:first-child {
+        color: #666;
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .exam-info span:last-child {
+        color: #DC143C;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    /* Start Button - Red Theme */
+    .start-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .start-btn:hover {
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+    }
+
+    .start-btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+        .exam-card {
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .logo-section {
+            padding: 30px 20px;
+        }
+        
+        .logo-section i {
+            font-size: 60px;
+        }
+        
+        .logo-section h3 {
+            font-size: 20px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+     <nav class="navbar">
+            <div class="logo-container">
+                  <img src="{{ url_for('static', filename='University emblem tr.png') }}" alt="Logo">
+                <div class="logo-title">
+                    <p class="nav-title1">Sardar Beant Singh State University, Gurdaspur</p>
+                    <p class="nav-title2">Online Examination System</p>
+                </div>               
+            </div>
+             <div id="toast"></div>
+             
+            <!-- <div class="navLink">
+                <div><a href="{{ url_for('home') }}">Home</a></div>
+                <div><a href="{{ url_for('login_page') }}">Login</a></div>
+                <div class="logout">Logout</div>
+            </div>    -->
+                <div class="navLink">
+    <div><a href="{{ url_for('home') }}">Home</a></div>
+    {% if session.logged_in %}
+        <div class="logout"><a href="{{ url_for('logout') }}">Logout</a></div>
+    {% else %}
+        <div><a href="{{ url_for('login_page') }}">Login</a></div>
+    {% endif %}
+</div> 
+              
+        </nav>
+       <p class="choose-exam">Choose Your Exam</p> 
+    <div class="exam-grid">
+        <div class="exam-card" onclick="startExam('python')">
+        <!-- Logo on Top -->
+        <div class="logo-section">
+            <i class="fab fa-python"></i>
+            <h3>Python Programming</h3>
+        </div>
+        
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="exam-info">
+                <span>📝 Total Questions:</span>
+                <span>12 Questions</span>
+            </div>
+            <div class="exam-info">
+                <span>⏱️ Duration:</span>
+                <span>6 Minutes</span>
+            </div>
+            
+            <button class="start-btn">
+                🚀 Start Exam
+            </button>
+        </div>
+    </div>
+
+      <div class="exam-card" onclick="startExam('cpp')">
+        <!-- Logo on Top -->
+        <div class="logo-section">
+            <i class="fas fa-code"></i>
+            <h3>CPP Programming</h3>
+        </div>
+        
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="exam-info">
+                <span>📝 Total Questions:</span>
+                <span>12 Questions</span>
+            </div>
+            <div class="exam-info">
+                <span>⏱️ Duration:</span>
+                <span>6 Minutes</span>
+            </div>
+            
+            <button class="start-btn">
+                🚀 Start Exam
+            </button>
+        </div>
+    </div>
+
+      <div class="exam-card" onclick="startExam('java')">
+        <!-- Logo on Top -->
+        <div class="logo-section">
+            <i class="fab fa-java"></i>
+            <h3>Java Programming</h3>
+        </div>
+        
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="exam-info">
+                <span>📝 Total Questions:</span>
+                <span>12 Questions</span>
+            </div>
+            <div class="exam-info">
+                <span>⏱️ Duration:</span>
+                <span>6 Minutes</span>
+            </div>
+            
+            <button class="start-btn">
+                🚀 Start Exam
+            </button>
+        </div>
+    </div>
+
+      <div class="exam-card" onclick="startExam('c')">
+        <!-- Logo on Top -->
+        <div class="logo-section">
+            <i class="fab fa-cuttlefish"></i>
+            <h3>C Programming</h3>
+        </div>
+        
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="exam-info">
+                <span>📝 Total Questions:</span>
+                <span>12 Questions</span>
+            </div>
+            <div class="exam-info">
+                <span>⏱️ Duration:</span>
+                <span>6 Minutes</span>
+            </div>
+            
+            <button class="start-btn">
+                🚀 Start Exam
+            </button>
+        </div>
+    </div>
+
+    </div>
+    
+    <script>    
+    function startExam(subject) {
+        // Show confirmation before starting exam
+        if(confirm(`Are you ready to start the ${subject.toUpperCase()} exam?`)) {
+            // Redirect to Flask route
+            window.location.href = `/exam/${subject}`;
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam - Java Programming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="exam-header">
+            <h1>Java Programming Exam</h1>
+            <div class="user-info">
+                <span>Student: {{ username }}</span>
+                <div class="timer" id="timer">Time Left: {{ duration }}:00</div>
+            </div>
+        </div>
+        
+        <form id="examForm" action="{{ url_for('submit_exam') }}" method="POST">
+            <div class="questions-container">
+                <!-- Question 1 -->
+                <div class="question-card">
+                    <h3>Question 1: Which component is responsible for converting
+                         Java bytecode into machine-specific code?</h3>
+
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q1" value="JDK" required>
+                            A. JDK
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="JRE">
+                            B. JRE
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="JIT( Just-In-Time Compiler)">
+                            C. JIT( Just-In-Time Compiler)
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="Garbage Collector">
+                            D. Garbage Collector
+                        </label>
+                    </div>
+                </div>
+                 <!-- q2 -->
+                  <div class="question-card">
+                    <h3>Question 2: Which of the following is used to print output in Java?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q2" value="print()" required>
+                            A. print()
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="System.out.println()">
+                            B. System.out.println()
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="cout">
+                            C. cout
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="echo">
+                            D. echo
+                        </label>
+                    </div>
+                </div>
+            
+                <!-- q3 -->
+                   <div class="question-card">
+                    <h3>Question 3: Which symbol is used for package declaration?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q3" value="import" required>
+                            A.import
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="package">
+                            B. package
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="include">
+                            C. include
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="using">
+                            D. using
+                        </label>
+                    </div>
+                </div>
+
+                <!-- q4 -->
+                 <div class="question-card">
+                    <h3>Question 4: Which type of inheritance is not supported in Java?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q4" value="Single" required>
+                           A. Single
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="Multilevel">
+                            B. Multilevel
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="Multiple (with classes)">
+                            C. Multiple (with classes)
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="Hierarchical">
+                            D. Hierarchical
+                        </label>
+                    </div>
+                </div>
+
+                <!-- q5 -->
+                 <div class="question-card">
+                    <h3>Question 5: Which feature makes Java platform independent?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q5" value="Bytecode" required>
+                           A. Bytecode
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="JVM">
+                            B. JVM
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="JDK">
+                            C. JDK
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value=" JRE">
+                            D. JRE
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q6 -->
+                <div class="question-card">
+                    <h3>Question 6: Which package is automatically imported?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q6" value="java.util" required>
+                            A. java.util
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="java.io">
+                            B. java.io
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="java.lang">
+                            C. java.lang
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="java.net">
+                            D. java.net
+                        </label>
+                    </div>
+                </div>
+                
+                  <!--  q7 -->
+                <div class="question-card">
+                    <h3>Question 7: Which method must be implemented in every Java program?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q7" value="run()" required>
+                           A. run()
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="start()">
+                            B. start()
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="main()">
+                            C. main()
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="execute()">
+                            D. execute()
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q8 -->
+                <div class="question-card">
+                    <h3>Question 8: Which statement is true?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q8" value=" Java supports pointers" required>
+                             A. Java supports pointers
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="Java uses references">
+                            B. Java uses references
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="Java has no memory management">
+                            C. Java has no memory management
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="Java is not secure">
+                            D. Java is not secure
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q9 -->
+                
+                <div class="question-card">
+                    <h3>Question 9: Which memory is managed by JVM?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q9" value="Stack" required>
+                            A.  Stack
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="Heap">
+                            B. Heap
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="Both">
+                           C. Both
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="None">
+                           D. None
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 10 -->
+                <div class="question-card">
+                    <h3>Question 10: Which keyword is used for inheritance?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q10" value="extends" required>
+                            A. extends
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="implements">
+                            B. implements
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="inherit">
+                            C. inherit
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="derive">
+                            D. derive
+                        </label>
+                    </div>
+                </div>
+                
+               
+                
+                <!-- Question 11 -->
+                <div class="question-card">
+                    <h3>Question 11: Which class is parent of all classes in Java?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q11" value="Class" required>
+                            A. Class
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="Object">
+                            B. Object
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="Main">
+                            C. Main
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="System">
+                            D. System
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 12 -->
+                <div class="question-card">
+                    <h3>Question 12: Which keyword is used to achieve multiple inheritance in Java?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q12" value="extends" required>
+                            A. extends
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="implements">
+                            B. implements
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="inherit">
+                            C. inherit
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="super">
+                            D. super
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exam-footer">
+                <button type="submit" class="btn-submit">Submit Exam</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Timer JavaScript -->
+    <script>
+        // Set exam duration from server (in minutes)
+        //let timeLeft = {{ duration }} * 60; // Convert to seconds
+        let timeLeft = 6 * 60; // 10 minutes
+        const timerElement = document.getElementById('timer');
+        const examForm = document.getElementById('examForm');
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            timerElement.textContent = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                // Auto-submit when timer expires
+                clearInterval(timerInterval);
+                autoSubmitExam();
+            }
+            
+            timeLeft--;
+        }
+        
+        function autoSubmitExam() {
+            // Warn user about auto-submission
+            alert('Time is up! Your exam will be submitted automatically.');
+            
+            // Create a form and submit it
+            const form = document.getElementById('examForm');
+            
+            // Add a hidden input to indicate auto-submission
+            const autoSubmitInput = document.createElement('input');
+            autoSubmitInput.type = 'hidden';
+            autoSubmitInput.name = 'auto_submit';
+            autoSubmitInput.value = 'true';
+            form.appendChild(autoSubmitInput);
+            
+            // Submit the form
+            form.submit();
+        }
+        
+        // Warn user before leaving the page
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = 'Your exam progress will be lost if you leave. Are you sure?';
+        });
+        
+        // Start timer
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); // Initial call
+    </script>
+</body>
+</html>

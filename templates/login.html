@@ -1,0 +1,606 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Examination System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">   
+</head>
+ <body>
+    <div class="wrapper">
+        <nav class="navbar">
+            <div class="logo-container">
+                  <img src="{{ url_for('static', filename='University emblem tr.png') }}" alt="Logo">
+                <div class="logo-title">
+                    <p class="nav-title1">Sardar Beant Singh State University, Gurdaspur</p>
+                    <p class="nav-title2">Online Examination System</p>
+                </div>               
+            </div>
+             <div id="toast"></div>
+             
+            <div class="navLink">
+                <div><a href="{{ url_for('home') }}">Home</a></div>
+                <div><a href="{{ url_for('login_page') }}">Login</a></div>
+                <div class="logout">Logout</div>
+            </div>     
+        </nav>
+        <div class="container">
+            <p class="student-heading">Student Login</p><br><br>
+
+             {% if error %}
+                <div style="color: red; text-align: center; background: #ffe6e6; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form action="{{ url_for('authenticate') }}" method="POST">
+                <label for="semester">Semester</label><br><br>
+                <input type="text" id="semester" name="semester"><br><br>
+
+                <label for="username">Username</label><br><br>
+                <input type="text" id="username" name="username" required 
+                           placeholder="Enter username (e.g., student1)"><br><br>
+                <label for="password">Password</label><br><br>
+                <input type="password" id="password" name="password" required 
+                           placeholder="Enter password"><br><br><br>
+
+                <div class="demo-credentials">
+                <h3>Demo Credentials:</h3>
+                <p>Username: student1 | Password: pass123</p>
+                <p>Username: student2 | Password: pass456</p>
+            </div>
+                <div class="captcha-container">
+                  
+                     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <div class="g-recaptcha" data-sitekey="6Lc8q9osAAAAAHZ1Q08FAOsXP_Hejwdg_0qT8jyP"></div>
+                </div>               
+                <br/>
+                <button type="submit" value="submit" class="login-button">Login</button><br><br>
+                <a href="#">Forgot Password</a>
+            </form>
+        <script>
+            function validateCaptcha() {
+                // Check if grecaptcha is loaded
+                if (typeof grecaptcha === 'undefined') {
+                    alert("reCAPTCHA is still loading. Please wait a moment and try again.");
+                    return false;
+                }
+                
+                var response = grecaptcha.getResponse();
+                if (response.length === 0) {
+                    alert("Please verify that you are not a robot!");
+                    return false;
+                }
+                return true;
+            }
+        </script>       
+        </div>
+
+    </div>
+      <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body> 
+</html>        -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>SBSSU State University | Online Examination Portal</title>
+    <!-- Google Fonts for elegant typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- reCAPTCHA API (async defer) -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2f7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* FULLSCREEN BACKGROUND IMAGE LAYER */
+        .background-wall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('/static/SBSSU-2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* Additional overlay to ensure text readability and modern look */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(2, 27, 56, 0.75) 0%, rgba(0, 51, 85, 0.82) 100%);
+            z-index: -1;
+        }
+
+        /* Main wrapper - centers content */
+        .login-wrapper {
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem auto;
+            animation: fadeInUp 0.6s ease-out;
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        /* CARD styling - glassmorphic effect so login form stands upon background */
+        .login-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem 2rem 2.2rem;
+            transition: transform 0.2s;
+            border: 1px solid rgba(255,255,240,0.3);
+            width: 100%;
+        }
+
+        .login-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 30px 50px -12px rgba(0,0,0,0.4);
+        }
+
+        /* university header inside card */
+        .uni-header {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 1.2rem;
+        }
+        
+        .uni-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #c4450c;
+            letter-spacing: -0.2px;
+            line-height: 1.35;
+        }
+        
+        .uni-name span {
+            font-weight: 600;
+            color: #c4450c;
+        }
+        
+        .exam-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #2c5282;
+            background: #eef2ff;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            margin-top: 0.6rem;
+        }
+        
+        .student-heading {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            color: #1e3a5f;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.3px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        label {
+            font-weight: 600;
+            color: #1e3a5f;
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #ffffff;
+            font-family: 'Inter', monospace;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #2b6cb0;
+            box-shadow: 0 0 0 3px rgba(43,108,176,0.2);
+        }
+        
+        .demo-box {
+            background: #f0f9ff;
+            border-left: 4px solid #2b6cb0;
+            padding: 0.8rem 1rem;
+            border-radius: 18px;
+            margin: 1.2rem 0;
+            font-size: 0.85rem;
+        }
+        
+        .demo-box h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1e4a76;
+            margin-bottom: 0.3rem;
+        }
+        
+        .demo-box p {
+            margin: 0.2rem 0;
+            color: #2d3748;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        
+        .captcha-container {
+            margin: 1rem 0 0.5rem;
+            display: flex;
+            justify-content: center;
+            transform: scale(0.96);
+        }
+        
+        .login-button {
+            width: 100%;
+            background: #dc3545;
+            color: white;
+            padding: 0.85rem;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .login-button:hover {
+            background: #c82333;
+            transform: scale(0.99);
+            box-shadow: 0 6px 14px rgba(0, 32, 64, 0.2);
+        }
+        
+        .forgot-link {
+            text-align: center;
+            margin-top: 1.2rem;
+        }
+        
+        .forgot-link a {
+            color: #2c5282;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        
+        .forgot-link a:hover {
+            text-decoration: underline;
+            color: #c4450c;
+        }
+        
+        .error-message {
+            background: #fff0f0;
+            border-left: 4px solid #e53e3e;
+            padding: 0.8rem;
+            border-radius: 16px;
+            color: #b91c1c;
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        
+        .success-message {
+            background: #e6fffa;
+            border-left: 4px solid #2c7a7b;
+            padding: 0.8rem;
+            border-radius: 16px;
+            color: #285e61;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* responsive */
+        @media (max-width: 540px) {
+            .login-wrapper {
+                margin: 1rem auto;
+            }
+            .login-card {
+                padding: 1.5rem;
+            }
+            .student-heading {
+                font-size: 1.5rem;
+            }
+            .captcha-container {
+                transform: scale(0.9);
+            }
+        }
+        
+        /* toast notification */
+        #toastMessage {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        
+        #toastMessage.show {
+            opacity: 1;
+            bottom: 30px;
+        }
+        
+        /* reCaptcha alignment */
+        .g-recaptcha {
+            transform-origin: center;
+        }
+        
+        input {
+            font-weight: 500;
+        }
+        
+        ::placeholder {
+            color: #adb5bd;
+            font-weight: 400;
+        }
+        
+        .g-recaptcha {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar">
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='University emblem tr.png') }}" alt="Logo">
+        <div class="logo-title">
+            <p class="nav-title1">Sardar Beant Singh State University, Gurdaspur</p>
+            <p class="nav-title2">Online Examination System</p>
+        </div>               
+    </div>
+    
+    <div class="navLink">
+        <div><a href="{{ url_for('home') }}">Home</a></div>
+        <div><a href="{{ url_for('login_page') }}">Login</a></div>
+        <div><a href="{{ url_for('logout') }}">Logout</a></div>
+    </div>     
+</nav>
+
+<!-- Background image layer -->
+<div class="background-wall"></div>
+<div class="background-overlay"></div>
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="uni-header">
+            <div class="uni-name">SARDAR BEANT SINGH STATE UNIVERSITY <span>📘</span></div>
+            <div class="exam-title">Online Examination System | Gurdaspur</div>
+        </div>
+        
+        <p class="student-heading">Student Login</p>
+        
+        <!-- Flash messages from backend -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div id="flashMessage">
+                    {% for message in messages %}
+                        <div class="error-message">⚠️ {{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Error message container for JavaScript validation -->
+        <div id="errorContainer" style="min-height: 60px;"></div>
+        
+        <!-- Traditional form submission to Flask backend -->
+        <form id="loginForm" action="{{ url_for('authenticate') }}" method="POST">
+            <div class="form-group">
+                <label for="semester">Semester *</label>
+                <input type="text" id="semester" name="semester" >
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Enter username (e.g., student1, student2)" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter password" required>
+            </div>
+            
+            <!-- Demo credentials box -->
+            <div class="demo-box">
+                <h4>🎓 Demo Credentials</h4>
+                <p>📌 Username: student1 | Password: pass123</p>
+                <p>📌 Username: student2 | Password: pass456</p>
+                <p>📌 Username: simran | Password: simran321</p>
+                <p>📌 Username: sneha | Password: sneha321</p>
+                
+            </div>
+            
+            <!-- Google reCAPTCHA container -->
+            <div class="captcha-container">
+                <div class="g-recaptcha" data-sitekey="6Lc8q9osAAAAAHZ1Q08FAOsXP_Hejwdg_0qT8jyP"></div>
+            </div>
+            
+            <button type="submit" id="loginBtn" class="login-button">🔐 Login to Examination</button>
+            
+            <div class="forgot-link">
+                <a href="#">Forgot Password? Contact Admin</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="toastMessage"></div>
+
+<script>
+    // Client-side validation before form submission
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const semesterInput = document.getElementById('semester');
+    const errorContainer = document.getElementById('errorContainer');
+    const toastEl = document.getElementById('toastMessage');
+    
+    function showMessage(message, isError = true) {
+        if (isError) {
+            errorContainer.innerHTML = `<div class="error-message">⚠️ ${message}</div>`;
+        } else {
+            errorContainer.innerHTML = `<div class="success-message">✅ ${message}</div>`;
+        }
+        errorContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    function showToast(msg, duration = 3000) {
+        if (toastEl) {
+            toastEl.textContent = msg;
+            toastEl.classList.add('show');
+            setTimeout(() => {
+                toastEl.classList.remove('show');
+            }, duration);
+        }
+    }
+    
+    // Validate reCAPTCHA before form submission
+    function isCaptchaVerified() {
+        if (typeof grecaptcha === 'undefined') {
+            showToast("reCAPTCHA still loading, please wait...", 2000);
+            return false;
+        }
+        const response = grecaptcha.getResponse();
+        if (!response || response.length === 0) {
+            return false;
+        }
+        return true;
+    }
+    
+    // Handle form submission - validate before sending to backend
+    loginForm.addEventListener('submit', function(e) {
+        // Clear previous error messages
+        errorContainer.innerHTML = "";
+        
+        const semester = semesterInput.value.trim();
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value;
+        
+        // Client-side validation
+        if (!username) {
+            e.preventDefault();
+            showMessage("Username is required.", true);
+            usernameInput.focus();
+            return;
+        }
+        if (!password) {
+            e.preventDefault();
+            showMessage("Password cannot be empty.", true);
+            passwordInput.focus();
+            return;
+        }
+        if (!semester) {
+            e.preventDefault();
+            showMessage("Please specify your semester (e.g., 3, 5).", true);
+            semesterInput.focus();
+            return;
+        }
+        
+        // Check reCAPTCHA
+        if (!isCaptchaVerified()) {
+            e.preventDefault();
+            showMessage("Please complete the reCAPTCHA verification (I'm not a robot).", true);
+            return;
+        }
+        
+        // If all validations pass, show loading message
+        showMessage("Verifying credentials... Please wait.", false);
+        
+        // Form will submit to backend automatically
+        // The backend will handle authentication and redirect to /choose-exam on success
+    });
+    
+    // Auto-hide flash messages after 5 seconds
+    setTimeout(() => {
+        const flashMessage = document.getElementById('flashMessage');
+        if (flashMessage) {
+            flashMessage.style.opacity = '0';
+            setTimeout(() => {
+                if (flashMessage) flashMessage.remove();
+            }, 500);
+        }
+    }, 5000);
+    
+    // Set placeholder for semester
+    if (semesterInput) {
+        semesterInput.placeholder = "e.g., 3rd Semester / Spring 2026";
+    }
+    
+    // Show welcome toast
+    setTimeout(() => {
+        showToast("🔒 Please complete CAPTCHA before login", 2000);
+    }, 500);
+</script>
+
+<!-- Additional style for navbar (your existing navbar CSS should be in style.css) -->
+<style>
+    /* Additional navbar styles if needed - these won't override your existing ones */
+    .navbar {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .navLink .logout {
+        cursor: pointer;
+    }
+    
+    /* Flash message fade out */
+    #flashMessage {
+        transition: opacity 0.5s ease;
+    }
+</style>
+
+</body>
+</html>

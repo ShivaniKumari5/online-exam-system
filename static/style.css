@@ -1,0 +1,668 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+/* .wrapper{
+    min-width: 1000px;
+} */
+
+
+
+/* Base styles (mobile first approach) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar responsiveness */
+.navbar {
+    width: 100%;
+    height: auto;
+    min-height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #b22222;
+    color: white;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-container img {
+    height: 80px;
+    width: 80px;
+    margin-top: 0;
+    border-radius: 50%;
+}
+
+.logo-title {
+    flex: 1;
+}
+
+.navLink {
+    display: flex;
+    margin: 0;
+    gap: 15px;
+    align-items: center;
+}
+
+.navLink a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+
+.navLink a:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 5px;
+}
+
+.logout {
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+
+.logout:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 5px;
+}
+
+.nav-title1 {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 5px 20px;
+}
+
+.nav-title2 {
+    color: white;
+    margin: 0 0 0 20px;
+    font-size: 16px;
+}
+
+/* Slider responsiveness */
+.slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+}
+
+/* Button responsiveness */
+.button-class {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-class a {
+    text-decoration: none;
+}
+
+.login-button {
+    padding: 12px 40px;
+    background: #b22222;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #8b1a1a;
+    transform: scale(1.05);
+}
+
+/* Container for login page */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 60vh;
+}
+
+.container input {
+    height: 40px;
+    width: 100%;
+    max-width: 300px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.student-heading {
+    font-size: 25px;
+    font-weight: 600;
+    color: #b22222;
+    padding: 20px;
+    text-align: center;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+.captcha-container {
+    border-radius: 5px;
+    width: fit-content;
+    margin: 10px 0;
+}
+
+.g-recaptcha {
+    transform: scale(0.9);
+    transform-origin: 0 0;
+}
+
+/* Form group for better spacing */
+.form-group {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Tablet styles (768px and below) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .logo-container {
+        justify-content: center;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    
+    .logo-container img {
+        height: 60px;
+        width: 60px;
+    }
+    
+    .nav-title1 {
+        font-size: 16px;
+        margin: 0 0 5px 10px;
+    }
+    
+    .nav-title2 {
+        font-size: 14px;
+        margin: 0 0 0 10px;
+    }
+    
+    .navLink {
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .navLink a, .logout {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+    
+    .slides img {
+        max-height: 350px;
+    }
+    
+    .student-heading {
+        font-size: 22px;
+    }
+    
+    .login-button {
+        padding: 10px 35px;
+        font-size: 16px;
+    }
+}
+
+/* Mobile styles (480px and below) */
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+    
+    .logo-container {
+        flex-direction: column;
+    }
+    
+    .logo-container img {
+        height: 50px;
+        width: 50px;
+        margin-bottom: 10px;
+    }
+    
+    .nav-title1 {
+        font-size: 14px;
+        margin: 5px 0;
+        text-align: center;
+    }
+    
+    .nav-title2 {
+        font-size: 12px;
+        margin: 0;
+        text-align: center;
+    }
+    
+    .navLink {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .navLink a, .logout {
+        display: block;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        text-align: center;
+    }
+    
+    .slides {
+        margin-top: 10px;
+    }
+    
+    .slides img {
+        max-height: 250px;
+    }
+    
+    .student-heading {
+        font-size: 20px;
+        padding: 15px;
+    }
+    
+    .login-button {
+        padding: 8px 30px;
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .container input {
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .form-group {
+        width: 90%;
+    }
+    
+    .g-recaptcha {
+        transform: scale(0.8);
+    }
+}
+
+/* Large screens (1200px and above) */
+@media screen and (min-width: 1200px) {
+    .navbar {
+        padding: 10px 50px;
+    }
+    
+    .logo-container img {
+        height: 100px;
+        width: 100px;
+    }
+    
+    .nav-title1 {
+        font-size: 24px;
+    }
+    
+    .nav-title2 {
+        font-size: 18px;
+    }
+    
+    .slides img {
+        max-height: 550px;
+    }
+    
+    .container input {
+        max-width: 350px;
+        height: 45px;
+    }
+    
+    .login-button {
+        padding: 15px 60px;
+        font-size: 20px;
+    }
+}
+
+/* Small height screens (landscape mode on mobile) */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .navbar {
+        min-height: 80px;
+    }
+    
+    .logo-container img {
+        height: 40px;
+        width: 40px;
+    }
+    
+    .slides img {
+        max-height: 200px;
+    }
+    
+    .student-heading {
+        padding: 10px;
+    }
+    
+    .container {
+        min-height: auto;
+    }
+}
+
+/* Accessibility - focus styles */
+.navLink a:focus, 
+.logout:focus, 
+.login-button:focus,
+.container input:focus {
+    outline: 2px solid #ffeb3b;
+    outline-offset: 2px;
+}
+
+/* Loading states */
+.login-button:active {
+    transform: scale(0.98);
+}
+
+
+/* toast */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #10b981;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  display: none;
+  z-index: 9999;
+ 
+}
+
+.logout{
+    cursor: pointer;
+}
+
+/* Exam Page Styles */
+.exam-header {
+    background: white;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.exam-header h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+}
+
+.timer {
+    background: #ff4444;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.questions-container {
+    background: white;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.question-card {
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-left: 4px solid #667eea;
+}
+
+.question-card h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.options label:hover {
+    background: #f0f0f0;
+    border-color: #667eea;
+}
+
+.options input[type="radio"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+.exam-footer {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.btn-submit {
+    background: #28a745;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background: #218838;
+}
+
+/* Result Page Styles */
+.result-box {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 800px;
+    margin: 50px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.result-box h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.result-pass {
+    border-top: 5px solid #28a745;
+}
+
+.result-fail {
+    border-top: 5px solid #dc3545;
+}
+
+.score-display {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.score-display h2 {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.percentage {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.status {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.pass {
+    color: #28a745;
+}
+
+.fail {
+    color: #dc3545;
+}
+
+.detailed-results {
+    margin-bottom: 30px;
+}
+
+.detailed-results h3 {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.results-table th,
+.results-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.results-table th {
+    background: #f5f5f5;
+    color: #666;
+    font-weight: 600;
+}
+
+.correct-row {
+    background: #d4edda;
+}
+
+.incorrect-row {
+    background: #f8d7da;
+}
+
+.action-buttons {
+    text-align: center;
+}
+
+.btn-home {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-home:hover {
+    background: #5a67d8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .user-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .timer {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .results-table {
+        font-size: 14px;
+    }
+    
+    .results-table th,
+    .results-table td {
+        padding: 8px;
+    }
+}
+.choose-exam{
+    padding-top: 1rem;
+    text-align: center;
+    font-size:30px;
+    color: #dc3545;
+    font-weight: 600;
+}

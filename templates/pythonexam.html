@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam - Python Programming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="exam-header">
+            <h1>Python Programming Exam</h1>
+            <div class="user-info">
+                <span>Student: {{ username }}</span>
+                <div class="timer" id="timer">Time Left: {{ duration }}:00</div>
+            </div>
+        </div>
+        
+        <form id="examForm" action="{{ url_for('submit_exam') }}" method="POST">
+            <div class="questions-container">
+                <!-- Question 1 -->
+                <div class="question-card">
+                    <h3>Question 1: Python is which type of language?</h3>
+
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q1" value="Compiled" required>
+                            A. Compiled
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="Interpreted">
+                            B. Interpreted
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="Both compiled and interpreted">
+                            C. Both compiled and interpreted
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="Assembly-based">
+                            D. Assembly-based
+                        </label>
+                    </div>
+                </div>
+                 <!-- q2 -->
+                  <div class="question-card">
+                    <h3>Question 2: Which of the following is a Python framework for web development?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q2" value="Django" required>
+                            A. Django
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="Laravel">
+                            B. Laravel
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="Spring">
+                            C. Spring
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="Express">
+                            D. Express
+                        </label>
+                    </div>
+                </div>
+            
+                <!-- q3 -->
+                   <div class="question-card">
+                    <h3>Question 3: Which Python library is commonly used for web frameworks?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q3" value="Numpy" required>
+                            A. Numpy
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="Pandas">
+                            B. Pandas
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="Flask">
+                            C. Flask
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="Matplotlib">
+                            D. Matplotlib
+                        </label>
+                    </div>
+                </div>
+
+                <!-- q4 -->
+                 <div class="question-card">
+                    <h3>Question 4: Which database is commonly used with Python web apps?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q4" value="MySQL" required>
+                           A. MySQL
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="MongoDB">
+                            B. MongoDB
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="SQLite">
+                            C. SQLite
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="All of the above">
+                            D. All of the above
+                        </label>
+                    </div>
+                </div>
+
+                <!-- q5 -->
+                 <div class="question-card">
+                    <h3>Question 5: Which method is used to read user input in Python?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q5" value="input()" required>
+                           A. input()
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="read()">
+                            B. read()
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="scan()">
+                            C. scan()
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value=" get()">
+                            D. get()
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q6 -->
+                <div class="question-card">
+                    <h3>Question 6: What is the correct file extension for Python files?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q6" value=".pt" required>
+                            A. .pt
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value=".py">
+                            B. .py
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value=".pyt">
+                            C. .pyt
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value=".python">
+                            D. .python
+                        </label>
+                    </div>
+                </div>
+                
+                  <!--  q7 -->
+                <div class="question-card">
+                    <h3>Question 7: Which keyword is used to define a function in Python?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q7" value="func" required>
+                           A. func
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="define">
+                            B. define
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="def">
+                            C. def
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="function">
+                            D. function
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q8 -->
+                <div class="question-card">
+                    <h3>Question 8: What is dictionary?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q8" value="Ordered key-value pair" required>
+                             A. Ordered key-value pair
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="Unordered key-value pair">
+                            B. Unordered key-value pair
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="List">
+                            C. List
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="Tuple">
+                            D. Tuple
+                        </label>
+                    </div>
+                </div>
+
+                <!--  q9 -->
+                
+                <div class="question-card">
+                    <h3>Question 9: Which data type is mutable?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q9" value="tuple" required>
+                            A.  tuple
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="string">
+                            B. string
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="list">
+                           C. list
+                        </label>
+                        <label>
+                            <input type="radio" name="q9" value="int">
+                           D. int
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 10 -->
+                <div class="question-card">
+                    <h3>Question 10: Which statement is true about Python variables?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q10" value="Must declare type" required>
+                            A. Must declare type
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="Type inferred at runtime">
+                            B. Type inferred at runtime
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="Cannot change type">
+                            C. Cannot change type
+                        </label>
+                        <label>
+                            <input type="radio" name="q10" value="Fixed memory">
+                            D. Fixed memory
+                        </label>
+                    </div>
+                </div>
+                
+               
+                
+                <!-- Question 11 -->
+                <div class="question-card">
+                    <h3>Question 11: What is namespace in Python?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q11" value="Variable storage" required>
+                            A. Variable storage
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="Mapping of names to objects">
+                            B. Mapping of names to objects
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="Function">
+                            C. Function
+                        </label>
+                        <label>
+                            <input type="radio" name="q11" value="Class">
+                            D. Class
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 12 -->
+                <div class="question-card">
+                    <h3>Question 12: Which is immutable?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q12" value="list" required>
+                            A. list
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="set">
+                            B. set
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="tuple">
+                            C. tuple
+                        </label>
+                        <label>
+                            <input type="radio" name="q12" value="dict">
+                            D. super
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exam-footer">
+                <button type="submit" class="btn-submit">Submit Exam</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Timer JavaScript -->
+    <script>
+        // Set exam duration from server (in minutes)
+        //let timeLeft = {{ duration }} * 60; // Convert to seconds
+        let timeLeft = 6 * 60; // 10 minutes
+        const timerElement = document.getElementById('timer');
+        const examForm = document.getElementById('examForm');
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            timerElement.textContent = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                // Auto-submit when timer expires
+                clearInterval(timerInterval);
+                autoSubmitExam();
+            }
+            
+            timeLeft--;
+        }
+        
+        function autoSubmitExam() {
+            // Warn user about auto-submission
+            alert('Time is up! Your exam will be submitted automatically.');
+            
+            // Create a form and submit it
+            const form = document.getElementById('examForm');
+            
+            // Add a hidden input to indicate auto-submission
+            const autoSubmitInput = document.createElement('input');
+            autoSubmitInput.type = 'hidden';
+            autoSubmitInput.name = 'auto_submit';
+            autoSubmitInput.value = 'true';
+            form.appendChild(autoSubmitInput);
+            
+            // Submit the form
+            form.submit();
+        }
+        
+        // Warn user before leaving the page
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = 'Your exam progress will be lost if you leave. Are you sure?';
+        });
+        
+        // Start timer
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); // Initial call
+    </script>
+</body>
+</html>
