@@ -113,10 +113,10 @@ online-exam-system/
 
 | Subject | Questions | Duration   | Passing Score |
 |---------|-----------|------------|---------------|
-| Python  | 12        | 15 minutes | 5 / 12        |
-| C++     | 12        | 15 minutes | 5 / 12        |
-| Java    | 12        | 15 minutes | 5 / 12        |
-| C       | 12        | 15 minutes | 5 / 12        |
+| Python  | 12        | 6 minutes | 5 / 12        |
+| C++     | 12        | 6 minutes | 5 / 12        |
+| Java    | 12        | 6 minutes | 5 / 12        |
+| C       | 12        | 6 minutes | 5 / 12        |
 
 ## 🔒 Security Features
 
@@ -148,6 +148,25 @@ Google responds: { success: true } or { success: false }
 If success → Flask checks username/password
 If fail    → Flask shows error message
 ```
+
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](screenshots/home.png)
+
+### 🔐 Login Page
+![Login Page](screenshots/login.png)
+
+### 📚 Choose Exam
+![Choose Exam](screenshots/chooseexam.png)
+
+### 📝 Exam Page
+![Exam Page](screenshots/exam.png)
+
+### 📊 Results
+![Results](screenshots/result.png)
+
 
 ## 📝 Future Enhancements
 
